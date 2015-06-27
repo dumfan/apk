@@ -1,0 +1,26 @@
+
+tr.amazing {
+	border-color: #B3CC57;
+}
+
+tr.bad {
+	border-color: #EF746F;
+}
+
+tbody tr {
+	border-color: #9FD6D2;
+}
+
+tr { border-left: 7px solid transparent;}
+
+h1 {
+	font-family: Montserrat
+}
+h1 span {
+	font-size: 50%;
+	text-transform: uppercase;
+}
+
+body {
+	font-family: 'Open Sans'
+}

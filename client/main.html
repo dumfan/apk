@@ -1,0 +1,22 @@
+<template name="main">
+	<table class="table table-condensed table-hover">
+		<thead>
+			<tr>
+				<th>Produkt</th>
+				<th>APK-värde</th>
+				<th>Typ</th>
+				<th>Förpackning</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each booze}}
+				<tr class="{{rowClass}}">
+					<td><a href="{{url}}">{{name}} {{name2}}</a></td>
+					<td><strong>{{round apk}}</strong></td>
+					<td>{{group}}</td>
+					<td>{{container}}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</template>
