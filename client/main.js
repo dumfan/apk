@@ -2,6 +2,12 @@ Template.main.helpers({
 	booze: function () {
 		return Booze.find();
 	},
+	loading: function() {
+		if(Booze.find().count() > 0) {
+			return false;
+		}
+		return true;
+	},
 	round: function(float) {
 		return Math.round(float * 100) / 100
 	},

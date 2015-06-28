@@ -1,4 +1,12 @@
 <template name="main">
+	{{#if loading}}
+		<div class="text-center">
+			<div class="pong-loader">
+				Loading…
+			</div>
+			<p>Connecting..</p>
+		</div>
+	{{else}}
 	<table class="table table-condensed table-hover">
 		<thead>
 			<tr>
@@ -19,4 +27,5 @@
 			{{/each}}
 		</tbody>
 	</table>
+	{{/if}}
 </template>
