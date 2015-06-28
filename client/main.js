@@ -21,7 +21,6 @@ Template.main.helpers({
 			return ml/10 + ' cl';
 		}
 		else if (ml >= 1000) {
-			console.log('More than 100:',ml);
 			return ml/1000 + ' l';
 		}
 		else {
