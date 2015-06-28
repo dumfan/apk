@@ -3,6 +3,13 @@ Template.groups.helpers({
 		return BoozeGroups.find({}, {
 			sort: { slug: 1 }
 		});
+	},
+	selected: function() {
+		var route = FlowRouter.getParam('group') || "";
+		if(this.slug == route) {
+			return "selected"
+		}
+		//return false
 	}
 });
 
