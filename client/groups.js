@@ -1,6 +1,8 @@
 Template.groups.helpers({
 	groups: function () {
-		return BoozeGroups.find();
+		return BoozeGroups.find({}, {
+			sort: { slug: 1 }
+		});
 	}
 });
 
