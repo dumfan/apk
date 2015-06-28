@@ -1,4 +1,4 @@
-![APK](public/apk.png)
+![APK](public/apk-logo.png)
 
 Application which calculates the APK value of products available at Systembolaget. Written in Meteor.
 
