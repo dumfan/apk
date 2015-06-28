@@ -13,7 +13,9 @@
 				<th>Produkt</th>
 				<th>APK</th>
 				<th>Typ</th>
-				<th>Förpackning</th>
+				<th class="hidden-xs">Förpackning</th>
+				<th class="hidden-xs">Volym</th>
+				<th>Pris</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,7 +24,9 @@
 					<td><a href="{{url}}">{{name}} {{name2}}</a></td>
 					<td><strong>{{round apk}}</strong></td>
 					<td>{{group}}</td>
-					<td>{{container}}</td>
+					<td class="hidden-xs">{{container}}</td>
+					<td class="hidden-xs">{{volume}}ml</td>
+					<td>{{price}}kr</td>
 				</tr>
 			{{/each}}
 		</tbody>
