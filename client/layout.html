@@ -1,7 +1,10 @@
 <template name="layout">
 	<div class="container">
 		<h1><img class="logo" src="/apk.png" /><span>by <a href="http://kother.io">Köther</a> by <a href="http://dumfan.net">dumfan</a></span></h1>
-		{{> groups }}
+		<div class="row">
+			{{> groups }}
+			{{> siteInfo }}
+		</div>
 		<hr>
 		{{> Template.dynamic template=main}}
 	</div>
