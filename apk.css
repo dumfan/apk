@@ -1,30 +1,53 @@
-.logo {
-	vertical-align: bottom;
-	margin-right: 15px;
-}
-tr.amazing {
-	border-color: #B3CC57;
-}
-
-tr.bad {
-	border-color: #EF746F;
-}
-
-tbody tr {
-	border-color: #9FD6D2;
-}
-
-tr { border-left: 7px solid transparent;}
-
-h1 {
-	margin-bottom: 20px;
-	font-family: Montserrat, "Arial black";
-}
-h1 span {
-	font-size: 40%;
-	text-transform: uppercase;
-}
-
 body {
 	font-family: 'Open Sans', arial, sans;
 }
+
+.container {
+	margin-top: 30px;
+}
+
+.logo {
+	margin-right: 15px;
+	vertical-align: bottom;
+}
+
+/* Verticaly center APK info text */
+.apk-info {
+	display: table;
+	height: 90px; /* same height as apk-logo.png */
+}
+.apk-info div {
+	display: table-cell;
+	vertical-align: middle;
+}
+.apk-info p {
+	margin: 0;
+}
+
+.chrome-extension {
+	margin-top: 15px;
+	font-size: 12px;
+}
+
+.alcohol-type {
+	margin-bottom: 20px;
+}
+
+tr.amazing {
+	border-left-color: #B3CC57;
+}
+tr.bad {
+	border-left-color: #EF746F;
+}
+
+tbody tr {
+	border-left-color: #9FD6D2;
+	border-right: 1px solid #ddd;
+}
+tbody tr:last-child {
+	border-bottom: 1px solid #ddd;
+}
+tr { 
+	border-left: 7px solid transparent;
+}
+

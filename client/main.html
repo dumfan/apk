@@ -7,7 +7,7 @@
 			<p>Connecting..</p>
 		</div>
 	{{else}}
-	<table class="table table-condensed table-hover">
+	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
 				<th>Produkt</th>
@@ -15,7 +15,7 @@
 				<th class="hidden-xs">Förpackning</th>
 				<th class="hidden-xs">Volym</th>
 				<th>Pris</th>
-				<th>Vol.%</th>
+				<th class="hidden-xs">Vol.%</th>
 				<th>APK</th>
 			</tr>
 		</thead>
@@ -27,7 +27,7 @@
 					<td class="hidden-xs">{{container}}</td>
 					<td class="hidden-xs">{{volume}} ml</td>
 					<td>{{price}} kr</td>
-					<td>{{alcohol}}%</td>
+					<td class="hidden-xs">{{alcohol}}%</td>
 					<td><strong>{{round apk}}</strong></td>
 				</tr>
 			{{/each}}
