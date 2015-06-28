@@ -1,4 +1,7 @@
-
+.logo {
+	vertical-align: bottom;
+	margin-right: 15px;
+}
 tr.amazing {
 	border-color: #B3CC57;
 }
@@ -14,6 +17,7 @@ tbody tr {
 tr { border-left: 7px solid transparent;}
 
 h1 {
+	margin-bottom: 20px;
 	font-family: Montserrat
 }
 h1 span {
