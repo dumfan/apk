@@ -10,8 +10,6 @@ msavin:mongol
 twbs:bootstrap
 meteorhacks:flow-router
 meteorhacks:flow-layout
-yasaricli:slugify
 meteorhacks:picker
-http
-email
 percolate:synced-cron
+apk-seed
