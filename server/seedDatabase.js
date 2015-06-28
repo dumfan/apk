@@ -38,7 +38,13 @@ seed = function() {
 			})
 		}
 	});
-	console.log("Done seeding database")
+	console.log("Done seeding database");
+	Email.send({
+		to: 'benjick@dumfan.net',
+		from: 'apk@dumfan.net',
+		subject: 'Seeding finished',
+		text: 'Just so you know'
+	});
 	return true;
 }
 

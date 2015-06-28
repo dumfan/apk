@@ -13,4 +13,5 @@ meteorhacks:flow-layout
 yasaricli:slugify
 meteorhacks:picker
 http
+email
 percolate:synced-cron
