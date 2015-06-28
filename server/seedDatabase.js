@@ -4,6 +4,7 @@ seed = function() {
 	var xml = HTTP.get('http://www.systembolaget.se/api/assortment/products/xml').content
 	console.log("Got XML");
 	var articles = xml2js.parseStringSync(xml);
+	Booze.remove({}); // workaround for meteor.com free hosting
 	BoozeGroups.remove({});
 	articles.artiklar.artikel.forEach(function (item) {
 		var price = parseFloat(item.Prisinklmoms[0]);
@@ -12,6 +13,7 @@ seed = function() {
 
 		var apk = ((alcohol/100)*volume)/price;
 		var id = Booze.upsert(+item.Varnummer[0], {
+			realId: +item.Varnummer[0],
 			apk: apk,
 			price: price,
 			volume: volume,
@@ -27,10 +29,14 @@ seed = function() {
 
 		})
 		slug = slugify(item.Varugrupp[0])
-		BoozeGroups.upsert(slug, {
-			slug: slug,
-			name: item.Varugrupp[0]
-		})
+		if(!BoozeGroups.findOne({
+			slug: slug
+		})) {
+			BoozeGroups.upsert(slug, {
+				slug: slug,
+				name: item.Varugrupp[0]
+			})
+		}
 	});
 	console.log("Done seeding database")
 	return true;

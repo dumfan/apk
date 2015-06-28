@@ -18,6 +18,6 @@ Template.main.helpers({
 	},
 	url: function() {
 		var pre = "http://www.systembolaget.se/"
-		return pre + this._id
+		return pre + this.realId;
 	}
 });
