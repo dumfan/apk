@@ -20,7 +20,6 @@ jsonRoute.route('/.json', function(params, req, res, next) {
 
 jsonRoute.route('/:group.json', function(params, req, res, next) {
 	slug = slugify(params.group)
-	console.log(slug)
 	var post = Booze.find({
 		groupSlug: slug
 	}, {
@@ -31,6 +30,5 @@ jsonRoute.route('/:group.json', function(params, req, res, next) {
 		}
 	}).fetch();
 	var post = JSON.stringify(post)
-	console.log(post)
 	res.end(post);
 });
