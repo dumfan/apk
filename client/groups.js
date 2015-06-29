@@ -9,7 +9,6 @@ Template.groups.helpers({
 		if(this.slug == route) {
 			return "selected"
 		}
-		//return false
 	},
 	searchTerm: function() {
 		if(FlowRouter.getRouteName() === 'search') {
