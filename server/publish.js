@@ -15,13 +15,19 @@ Meteor.publish('bestApk', function () {
 	}, sort);
 });
 
-Meteor.publish('group', function (group) {
-	return Booze.find({
-		groupSlug: group
-	}, {
-		sort: {apk: -1},
-		limit: 50,
-	});
+Meteor.publish('groupAndTerm', function (group, term) {
+	console.log(term)
+	var query = {}
+	if(group!=="alla") {
+		query.groupSlug = group
+	}
+	if(term!=="") {
+		query.$or = [ 
+			{ name: { $regex : term, $options:"i" } }, 
+			{ name2: { $regex : term, $options:"i" } } 
+		] 
+	}
+	return Booze.find(query, sort);
 });
 
 Meteor.publish('search', function (term) {
