@@ -22,4 +22,16 @@ Meteor.publish('group', function (group) {
 	});
 });
 
+Meteor.publish('search', function (term) {
+	return Booze.find({ 
+		$or: [ 
+			{ name: { $regex : term, $options:"i" } }, 
+			{ name2: { $regex : term, $options:"i" } } 
+		] 
+	}, {
+		sort: {apk: -1},
+		limit: 50,
+	});
+});
+
 // db.inventory.find( { qty: { $ne: 20 } } )
