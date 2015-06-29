@@ -11,22 +11,28 @@ Template.groups.helpers({
 		}
 	},
 	searchTerm: function() {
-		if(FlowRouter.getRouteName() === 'search') {
-			return FlowRouter.getParam("term")
-		}
+		return FlowRouter.getParam("term") || ""
 	},
 });
 
 Template.groups.events({
 	'change select': function (event) {
-		FlowRouter.go('/' + event.currentTarget.value)
+		FlowRouter.go('/:group/:term?', {
+			group: event.currentTarget.value,
+			term: FlowRouter.getParam('term')
+		});
 	},
 	'keyup input': function (e) {
 		if(e.target.value.length === 0) {
-			FlowRouter.go('/');
+			FlowRouter.go('/:group/:term?', {
+				group: FlowRouter.getParam('group') || "alla",
+			});
 		}
 		if(e.target.value.length >= 3) {
-			FlowRouter.go('/search/' + e.target.value);
+			FlowRouter.go('/:group/:term?', {
+				group: FlowRouter.getParam('group') || "alla",
+				term: e.target.value
+			});
 		}
 	},
 });
