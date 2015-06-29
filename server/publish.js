@@ -1,3 +1,8 @@
+var sort = {
+	sort: {apk: -1},
+	limit: 50,
+}
+
 Meteor.publish('groups', function () {
 	return BoozeGroups.find();
 });
@@ -7,10 +12,7 @@ Meteor.publish('bestApk', function () {
 		apk: {
 			$ne: 0
 		}
-	}, {
-		sort: {apk: -1},
-		limit: 50,
-	});
+	}, sort);
 });
 
 Meteor.publish('group', function (group) {
@@ -28,10 +30,7 @@ Meteor.publish('search', function (term) {
 			{ name: { $regex : term, $options:"i" } }, 
 			{ name2: { $regex : term, $options:"i" } } 
 		] 
-	}, {
-		sort: {apk: -1},
-		limit: 50,
-	});
+	}, sort);
 });
 
 // db.inventory.find( { qty: { $ne: 20 } } )
