@@ -3,10 +3,13 @@ Template.main.helpers({
 		return Booze.find();
 	},
 	loading: function() {
-		if(Booze.find().count() > 0) {
-			return false;
+		return !FlowRouter.subsReady();
+	},
+	noresults: function() {
+		if(Booze.find().count() === 0) {
+			return true;
 		}
-		return true;
+		return false;
 	},
 	round: function(float) {
 		return Math.round(float * 100) / 100

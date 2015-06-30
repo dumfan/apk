@@ -3,16 +3,19 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<label class="control-label" for="product-group">Visa alkoholtyp</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-2">
+				
 				<select class="form-control" id="product-group">
-					<option value="">Alla</option>
+					<option value="alla">Alla</option>
 					{{#each groups}}
 						<option value="{{slug}}" {{selected}}>{{name}}</option>
 					{{/each}}
 				</select>
+			</div>
+
+			<div class="col-sm-3">
+				<label class="control-label" for="product-search">Sök produkt</label>
+				
+				<input type="search" value="{{searchTerm}}" placeholder="Sökterm" class="form-control product-search">
 			</div>
 		</div>
 	</div>
