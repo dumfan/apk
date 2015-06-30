@@ -24,7 +24,7 @@ Template.groups.events({
 	},
 	'keyup input': function (e) {
 		if(e.target.value.length === 0) {
-			FlowRouter.go('/:group/:term?', {
+			FlowRouter.go('/:group/', {
 				group: FlowRouter.getParam('group') || "alla",
 			});
 		}
