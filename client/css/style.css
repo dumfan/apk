@@ -49,4 +49,7 @@ tbody tr:last-child {
 tr { 
 	border-left: 7px solid transparent;
 }
+tr a {
+	color: #111;
+}
 
