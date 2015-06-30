@@ -29,7 +29,7 @@ Template.groups.events({
 			});
 		}
 		if(e.target.value.length >= 3) {
-			FlowRouter.go('/:group/:term?', {
+			FlowRouter.go('/:group/:term', {
 				group: FlowRouter.getParam('group') || "alla",
 				term: e.target.value
 			});
