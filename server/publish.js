@@ -16,7 +16,6 @@ Meteor.publish('bestApk', function () {
 });
 
 Meteor.publish('groupAndTerm', function (group, term) {
-	console.log(term)
 	var query = {}
 	if(group!=="alla") {
 		query.groupSlug = group
