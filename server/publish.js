@@ -17,10 +17,10 @@ Meteor.publish('bestApk', function () {
 
 Meteor.publish('groupAndTerm', function (group, term) {
 	var query = {}
-	if(group!=="alla") {
+	if(group !== "alla") {
 		query.groupSlug = group
 	}
-	if(term!=="") {
+	if(term !== "") {
 		query.$or = [ 
 			{ name: { $regex : term, $options:"i" } }, 
 			{ name2: { $regex : term, $options:"i" } } 
