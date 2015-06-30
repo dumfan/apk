@@ -1,6 +1,10 @@
 Template.main.helpers({
 	booze: function () {
-		return Booze.find();
+		return Booze.find({}, {
+			sort: {
+				apk: -1
+			}
+		});
 	},
 	loading: function() {
 		return !FlowRouter.subsReady();
