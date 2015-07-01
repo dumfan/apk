@@ -40,8 +40,8 @@ seed = function() {
 	});
 	console.log("Done seeding database");
 	Email.send({
-		to: 'benjick@dumfan.net',
-		from: 'apk@kother.io',
+		to: process.env.EMAILTO,
+		from: process.env.EMAILFROM,
 		subject: 'Seeding finished',
 		text: 'Just so you know'
 	});
