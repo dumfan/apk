@@ -4,6 +4,14 @@ seed = function() {
 	var xml = HTTP.get('http://www.systembolaget.se/api/assortment/products/xml').content
 	console.log("Got XML");
 	var articles = xml2js.parseStringSync(xml);
+	var hash = CryptoJS.SHA1(JSON.stringify(articles.artiklar.artikel)).toString();
+	if(Settings.find({
+		hash: hash
+	}).count() > 0) {
+		console.log("Database already seeded");
+		return false;
+	}
+	Settings.remove({});
 	Booze.remove({}); // workaround for meteor.com free hosting
 	BoozeGroups.remove({});
 	articles.artiklar.artikel.forEach(function (item) {
@@ -38,7 +46,10 @@ seed = function() {
 			})
 		}
 	});
-	console.log("Done seeding database");
+	Settings.insert({
+		hash: hash
+	});
+	console.log("Done seeding database with hash " + hash);
 	Email.send({
 		to: process.env.EMAILTO,
 		from: process.env.EMAILFROM,

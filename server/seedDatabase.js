@@ -1,15 +1,15 @@
 Meteor.startup(function () {
-	if (Booze.find().count() === 0) {
-		seed();
-	}
+	seed();
 });
 
 SyncedCron.add({
-	name: 'Seed the database every 24 hours',
+	name: 'Seed the database every 12 hours',
 	schedule: function(parser) {
-		return parser.text('every 24 hours');
+		return parser.text('every 12 hours');
 	},
 	job: function() {
 		return seed();
 	}
 });
+
+SyncedCron.start();
