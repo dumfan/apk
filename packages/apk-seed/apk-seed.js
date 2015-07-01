@@ -41,7 +41,7 @@ seed = function() {
 	console.log("Done seeding database");
 	Email.send({
 		to: 'benjick@dumfan.net',
-		from: 'apk@dumfan.net',
+		from: 'apk@kother.io',
 		subject: 'Seeding finished',
 		text: 'Just so you know'
 	});
