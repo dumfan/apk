@@ -39,11 +39,6 @@ Groups = React.createClass({
   },
 
   render: function() {
-    if(this.data.loading) {
-      return (
-        <p>Loading booze types</p>
-      )
-    }
     return (
       <div className="alcohol-type">
         <div className="row">
