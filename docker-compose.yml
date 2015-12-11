@@ -1,0 +1,13 @@
+dashboard:
+  build: .
+  ports:
+   - "3005:3000"
+  links:
+   - mongo-dev:mongo-dev
+  environment:
+   - MONGO_URL=mongodb://mongo-dev/yourapp
+   - ROOT_URL=http://localhost:3005
+   - DELAY=30
+   - PORT=3000
+mongo-dev:
+  image: mongo
