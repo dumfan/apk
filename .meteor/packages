@@ -8,8 +8,9 @@ meteor-platform
 peerlibrary:xml2js
 msavin:mongol
 twbs:bootstrap
+react
 kadira:flow-router
-kadira:blaze-layout
+kadira:react-layout
 meteorhacks:picker
 percolate:synced-cron
 apk-seed
