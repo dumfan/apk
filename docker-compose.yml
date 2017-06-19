@@ -1,4 +1,4 @@
-dashboard:
+apk:
   build: .
   ports:
    - "3005:3000"
