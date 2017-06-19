@@ -1,34 +1,44 @@
-var jsonRoute = Picker.filter(function(req, res) {
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	return true;
+import {slugify} from 'meteor/yasaricli:slugify';
+import {Picker} from 'meteor/meteorhacks:picker';
+import {Booze} from '../lib/booze';
+
+const jsonRoute = Picker.filter((req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  return true;
 });
 
-jsonRoute.route('/.json', function(params, req, res, next) {
-	var post = Booze.find({
-		apk: {
-			$ne: 0
-		}
-	}, {
-		sort: {apk: -1},
-		limit: 50,
-		fields: {
-			original: 0
-		}
-	}).fetch();
-	res.end(JSON.stringify(post));
+jsonRoute.route('/.json', (params, req, res) => {
+  const post = Booze.find(
+    {
+      apk: {
+        $ne: 0,
+      },
+    },
+    {
+      sort: {apk: -1},
+      limit: 50,
+      fields: {
+        original: 0,
+      },
+    },
+  ).fetch();
+  res.end(JSON.stringify(post));
 });
 
-jsonRoute.route('/:group.json', function(params, req, res, next) {
-	slug = slugify(params.group)
-	var post = Booze.find({
-		groupSlug: slug
-	}, {
-		sort: {apk: -1},
-		limit: 50,
-		fields: {
-			original: 0
-		}
-	}).fetch();
-	var post = JSON.stringify(post)
-	res.end(post);
+jsonRoute.route('/:group.json', (params, req, res) => {
+  const slug = slugify(params.group);
+  const post = Booze.find(
+    {
+      groupSlug: slug,
+    },
+    {
+      sort: {apk: -1},
+      limit: 50,
+      fields: {
+        original: 0,
+      },
+    },
+  ).fetch();
+  const json = JSON.stringify(post);
+  res.end(json);
 });

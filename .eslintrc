@@ -1,0 +1,14 @@
+{
+  "extends": "benjick",
+  "globals": {
+    "Meteor": true
+  },
+  "settings": {
+    "import/resolver": "meteor",
+    "import/core-modules": [ "meteor" ]
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": 0,
+    "import/extensions": 0
+  }
+}
