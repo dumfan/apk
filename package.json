@@ -1,0 +1,27 @@
+{
+  "name": "apk",
+  "version": "1.0.0",
+  "description": "![APK](public/apk-logo.png)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dumfan/apk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dumfan/apk/issues"
+  },
+  "homepage": "https://github.com/dumfan/apk#readme",
+  "devDependencies": {
+    "eslint-config-benjick": "^1.0.1",
+    "eslint-import-resolver-meteor": "^0.4.0"
+  }
+}

@@ -1,1 +1,1 @@
-Meteor.subscribe('groups')
+Meteor.subscribe('groups');
