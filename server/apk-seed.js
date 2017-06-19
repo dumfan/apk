@@ -1,10 +1,18 @@
+/* eslint-disable no-console */
+import {slugify} from 'meteor/yasaricli:slugify';
+import {HTTP} from 'meteor/http';
+import {Email} from 'meteor/email';
+import {xml2js} from 'meteor/peerlibrary:xml2js';
+import {CryptoJS} from 'meteor/jparker:crypto-core';
+import {BoozeGroups, Booze, Settings} from '../lib/booze';
+
 function insert(item) {
   const price = parseFloat(item.Prisinklmoms[0]);
   const volume = parseFloat(item.Volymiml[0]);
   const alcohol = parseFloat(item.Alkoholhalt[0]);
 
   const apk = alcohol / 100 * volume / price;
-  const id = Booze.upsert(+item.Varnummer[0], {
+  Booze.upsert(+item.Varnummer[0], {
     realId: +item.Varnummer[0],
     apk,
     price,
@@ -21,7 +29,7 @@ function insert(item) {
   });
 }
 
-seed = function() {
+export const seed = () => {
   const slugs = {};
   console.log('Starting database seed');
   console.log('Getting XML');
@@ -33,7 +41,7 @@ seed = function() {
       console.log('Got XML');
       const articles = xml2js.parseStringSync(xml);
       const hash = CryptoJS.SHA1(
-        JSON.stringify(articles.artiklar.artikel)
+        JSON.stringify(articles.artiklar.artikel),
       ).toString();
       if (Settings.find({hash}).count() > 0) {
         console.log('Database already seeded');
@@ -44,7 +52,7 @@ seed = function() {
       BoozeGroups.remove({});
       articles.artiklar.artikel.forEach(item => {
         insert(item);
-        slug = slugify(item.Varugrupp[0]);
+        const slug = slugify(item.Varugrupp[0]);
         if (!slugs[slug]) {
           BoozeGroups.upsert(slug, {
             slug,
@@ -63,6 +71,6 @@ seed = function() {
         subject: 'Seeding finished',
         text: 'Just so you know',
       });
-    }
+    },
   );
 };

@@ -9,13 +9,6 @@
   },
   "rules": {
     "import/no-extraneous-dependencies": 0,
-    "import/extensions": 0,
-    "prettier/prettier": ["error", {
-      "singleQuote": true,
-      "trailingComma": "es5",
-      "bracketSpacing": false,
-      "jsxBracketSameLine": true,
-      "parser": "flow"
-    }]
+    "import/extensions": 0
   }
 }

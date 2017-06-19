@@ -1,3 +1,7 @@
+import {Template} from 'meteor/templating';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+import {Booze} from '../lib/booze';
+
 Template.main.helpers({
   booze() {
     return Booze.find(
@@ -6,7 +10,7 @@ Template.main.helpers({
         sort: {
           apk: -1,
         },
-      }
+      },
     );
   },
   loading() {

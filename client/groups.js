@@ -1,5 +1,6 @@
-// import {Template} from 'meteor/templating';
-// import {FlowRouter} from 'meteor/kadira:flow-router';
+import {Template} from 'meteor/templating';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+import {BoozeGroups} from '../lib/booze';
 
 Template.groups.helpers({
   groups() {
@@ -7,14 +8,15 @@ Template.groups.helpers({
       {},
       {
         sort: {slug: 1},
-      }
+      },
     );
   },
   selected() {
     const route = FlowRouter.getParam('group') || '';
-    if (this.slug == route) {
+    if (this.slug === route) {
       return 'selected';
     }
+    return '';
   },
   searchTerm() {
     return FlowRouter.getParam('term') || '';
@@ -22,13 +24,13 @@ Template.groups.helpers({
 });
 
 Template.groups.events({
-  'change select': function(event) {
+  'change select': e => {
     FlowRouter.go('/:group/:term?', {
-      group: event.currentTarget.value,
+      group: e.currentTarget.value,
       term: FlowRouter.getParam('term'),
     });
   },
-  'keyup input': function(e) {
+  'keyup input': e => {
     if (e.target.value.length === 0) {
       FlowRouter.go('/:group/', {
         group: FlowRouter.getParam('group') || 'alla',

@@ -1,3 +1,5 @@
+import {BoozeGroups, Booze} from '../lib/booze';
+
 const sort = {
   sort: {apk: -1},
   limit: 50,
@@ -12,8 +14,8 @@ Meteor.publish('bestApk', () =>
         $ne: 0,
       },
     },
-    sort
-  )
+    sort,
+  ),
 );
 
 Meteor.publish('groupAndTerm', (group, term) => {
@@ -38,6 +40,6 @@ Meteor.publish('search', term =>
         {name2: {$regex: term, $options: 'i'}},
       ],
     },
-    sort
-  )
+    sort,
+  ),
 );

@@ -1,3 +1,6 @@
+import {SyncedCron} from 'meteor/percolate:synced-cron';
+import {seed} from './apk-seed';
+
 Meteor.startup(() => {
   seed();
 });
