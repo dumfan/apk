@@ -43,11 +43,12 @@ export const seed = () => {
       const hash = CryptoJS.SHA1(
         JSON.stringify(articles.artiklar.artikel),
       ).toString();
-      if (Settings.find({hash}).count() > 0) {
+      const settings = Settings.findOne('settings');
+      if (settings && settings.hash === hash) {
         console.log('Database already seeded');
+        Settings.upsert('settings', {$set: {lastCheck: new Date()}});
         return;
       }
-      Settings.remove({});
       Booze.remove({});
       BoozeGroups.remove({});
       articles.artiklar.artikel.forEach(item => {
@@ -61,8 +62,10 @@ export const seed = () => {
           slugs[slug] = true;
         }
       });
-      Settings.insert({
+      Settings.upsert('settings', {
         hash,
+        lastCheck: new Date(),
+        lastUpdate: new Date(),
       });
       console.log(`Done seeding database with hash ${hash}`);
       Email.send({
