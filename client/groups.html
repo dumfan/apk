@@ -6,6 +6,13 @@
 
         <select class="form-control" id="product-group">
           <option value="alla">Alla</option>
+          {{#if favorites.length}}
+            <optgroup label="Snabbval">
+            {{#each favorites}}
+              <option value="{{slug}}" {{selected}}>{{name}}</option>
+            {{/each}}
+            </optgroup>
+          {{/if}}
           {{#each groups}}
             <option value="{{slug}}" {{selected}}>{{name}}</option>
           {{/each}}

@@ -2,14 +2,27 @@ import {Template} from 'meteor/templating';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {BoozeGroups} from '../lib/booze';
 
+const favs = [
+  'ol',
+  'cider',
+  'rott-vin',
+  'vitt-vin',
+  'okryddad-sprit',
+  'rosevin',
+];
+
+const options = {
+  sort: {name: 1},
+};
+
 Template.groups.helpers({
+  favorites() {
+    return BoozeGroups.find({}, options)
+      .map(a => a)
+      .filter(group => favs.includes(group.slug));
+  },
   groups() {
-    return BoozeGroups.find(
-      {},
-      {
-        sort: {slug: 1},
-      },
-    );
+    return BoozeGroups.find({}, options);
   },
   selected() {
     const route = FlowRouter.getParam('group') || '';
