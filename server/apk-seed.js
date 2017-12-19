@@ -10,6 +10,8 @@ function insert(item) {
   const price = parseFloat(item.Prisinklmoms[0]);
   const volume = parseFloat(item.Volymiml[0]);
   const alcohol = parseFloat(item.Alkoholhalt[0]);
+  const standardUnit = volume * alcohol * 0.01 * (1 / 15);
+  const kps = price / standardUnit;
 
   const apk = alcohol / 100 * volume / price;
   Booze.upsert(+item.Varnummer[0], {
@@ -18,6 +20,7 @@ function insert(item) {
     price,
     volume,
     alcohol,
+    kps,
     name: item.Namn[0],
     name2: item.Namn2[0],
     group: item.Varugrupp[0],
