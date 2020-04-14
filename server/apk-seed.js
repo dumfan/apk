@@ -5,6 +5,7 @@ import {Email} from 'meteor/email';
 import {xml2js} from 'meteor/peerlibrary:xml2js';
 import {CryptoJS} from 'meteor/jparker:crypto-core';
 import {BoozeGroups, Booze, Settings} from '../lib/booze';
+import {log} from '../lib/helpers';
 
 function insert(item) {
   const price = parseFloat(item.Prisinklmoms[0]);
@@ -31,11 +32,6 @@ function insert(item) {
     original: item,
   });
 }
-
-const log = (id, comment) => {
-  const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
-  console.log(`${date} [${id}] ${comment}`);
-};
 
 export const seed = () => {
   const slugs = {};
