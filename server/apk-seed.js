@@ -15,8 +15,8 @@ function insert(item) {
   const kps = price / standardUnit;
 
   const apk = alcohol / 100 * volume / price;
-  Booze.upsert(+item.Varnummer[0], {
-    realId: +item.Varnummer[0],
+  Booze.upsert(+item.nr[0], {
+    realId: +item.nr[0],
     apk,
     price,
     volume,
@@ -56,6 +56,7 @@ export const seed = () => {
         });
         return;
       }
+      log('app', `Seed started`);
       Booze.remove({});
       BoozeGroups.remove({});
       articles.artiklar.artikel.forEach(item => {
