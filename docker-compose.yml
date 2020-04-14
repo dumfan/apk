@@ -1,13 +1,19 @@
 apk:
   build: .
-  ports:
-   - "3005:3000"
+  expose:
+   - "3000"
   links:
-   - mongo-dev:mongo-dev
+   - db
   environment:
-   - MONGO_URL=mongodb://mongo-dev/yourapp
-   - ROOT_URL=http://localhost:3005
+   - MONGO_URL=mongodb://db/apk
+   - ROOT_URL=https://apk.dumfan.net
    - DELAY=30
    - PORT=3000
-mongo-dev:
+   - VIRTUAL_HOST=apk.dumfan.net
+   - VIRTUAL_PORT=3000
+   - LETSENCRYPT_HOST=apk.dumfan.net
+   - LETSENCRYPT_EMAIL=benjick@dumfan.net
+  restart: always
+db:
   image: mongo
+  restart: always
