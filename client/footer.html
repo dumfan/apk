@@ -2,9 +2,9 @@
   <footer class="footer">
     <div class="container">
       <p class="text-muted text-center">
-        <span style="white-space: nowrap;">Last seed: <strong>{{settings.time}}</strong>.</span>
+        <span style="white-space: nowrap;">Last seed: <strong>{{timeAgo settings.time}}</strong>.</span>
         {{#unless equals settings.time settings.lastCheck}}
-        <span style="white-space: nowrap;">Last check: <strong>{{settings.lastCheck}}</strong>.</span>
+        <span style="white-space: nowrap;">Last check: <strong>{{timeAgo settings.lastCheck}}</strong>.</span>
         {{/unless}}
         <span style="white-space: nowrap;">Hash: <code>{{settings.hash}}</code>.</span>
       </p>
