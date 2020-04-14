@@ -1,4 +1,4 @@
-import {BoozeGroups, Booze} from '../lib/booze';
+import {BoozeGroups, Booze, Settings} from '../lib/booze';
 
 const sort = {
   sort: {apk: -1},
@@ -6,6 +6,7 @@ const sort = {
 };
 
 Meteor.publish('groups', () => BoozeGroups.find());
+Meteor.publish('settings', () => Settings.find());
 
 Meteor.publish('bestApk', () =>
   Booze.find(
