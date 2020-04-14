@@ -1,6 +1,6 @@
+import * as timeago from 'timeago.js';
 import {Template} from 'meteor/templating';
 import {Settings} from '../lib/booze';
-import * as timeago from 'timeago.js';
 
 Template.footer.helpers({
   settings() {
