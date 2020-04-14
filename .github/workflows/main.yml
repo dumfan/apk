@@ -16,3 +16,4 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: cd /home/github/apk && make deploy
+          command_timeout: 20m
