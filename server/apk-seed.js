@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import {slugify} from 'meteor/yasaricli:slugify';
 import {HTTP} from 'meteor/http';
-import {Email} from 'meteor/email';
 import {xml2js} from 'meteor/peerlibrary:xml2js';
 import {CryptoJS} from 'meteor/jparker:crypto-core';
 import {BoozeGroups, Booze, Settings} from '../lib/booze';
@@ -76,12 +75,6 @@ export const seed = () => {
         lastCheck: new Date().toISOString().slice(0, 19).replace('T', ' '),
       });
       log('app', `Done seeding database with hash ${hash}`);
-      Email.send({
-        to: process.env.EMAILTO,
-        from: process.env.EMAILFROM,
-        subject: 'Seeding finished',
-        text: 'Just so you know',
-      });
     },
   );
 };
