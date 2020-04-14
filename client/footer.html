@@ -2,10 +2,11 @@
   <footer class="footer">
     <div class="container">
       <p class="text-muted text-center">
-        {{#each settings}}
-          <span style="white-space: nowrap;">Last seed: <strong>{{time}}</strong>.</span>
-          <span style="white-space: nowrap;">Hash: <code>{{hash}}</code>.</span>
-        {{/each}}
+        Last seed: <strong>{{timeAgo settings.time}}</strong><br />
+        {{#unless equals settings.time settings.lastCheck}}
+          Last check: <strong>{{timeAgo settings.lastCheck}}</strong><br />
+        {{/unless}}
+        Hash: <code>{{settings.hash}}</code>
       </p>
       <p class="text-center">
         <a href="https://github.com/dumfan/apk">
