@@ -6,7 +6,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    # if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: SSH and execute deploy script
         uses: appleboy/ssh-action@master
@@ -15,4 +15,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: cd /home/github/apk && ls -al . # make deploy && sleep 10 && docker-compose logs apk
+          script: cd /home/github/apk && make deploy && sleep 10 && docker-compose logs apk
