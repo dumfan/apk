@@ -34,20 +34,20 @@ function insert(item) {
 
 export const seed = () => {
   const slugs = {};
-  log('app', 'Fetching XML to seed database...');
+  log('seed', 'Fetching XML to seed database...');
   HTTP.get(
     'http://www.systembolaget.se/api/assortment/products/xml',
     {},
     (err, result) => {
       const xml = result.content;
-      log('app', `Got XML!`);
+      log('seed', `Got XML!`);
       const articles = xml2js.parseStringSync(xml);
       const hash = CryptoJS.SHA1(
         JSON.stringify(articles.artiklar.artikel),
       ).toString();
       const settings = Settings.findOne('settings');
       if (settings && settings.hash === hash) {
-        log('app', `Database already seeded`);
+        log('seed', `Database already seeded`);
         Settings.upsert('settings', {
           $set: {
             lastCheck: new Date().toISOString().slice(0, 19).replace('T', ' '),
@@ -55,7 +55,7 @@ export const seed = () => {
         });
         return;
       }
-      log('app', `Seed started`);
+      log('seed', `Seed started`);
       Booze.remove({});
       BoozeGroups.remove({});
       articles.artiklar.artikel.forEach(item => {
@@ -74,7 +74,7 @@ export const seed = () => {
         time: new Date().toISOString().slice(0, 19).replace('T', ' '),
         lastCheck: new Date().toISOString().slice(0, 19).replace('T', ' '),
       });
-      log('app', `Done seeding database with hash ${hash}`);
+      log('seed', `Done seeding database with hash ${hash}`);
     },
   );
 };
