@@ -1,1 +1,1 @@
-FROM mrauhu/meteord:onbuild
+FROM jshimko/meteor-launchpad:latest
