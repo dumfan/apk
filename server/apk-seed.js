@@ -32,22 +32,26 @@ function insert(item) {
   });
 }
 
+const log = (id: string, comment: string) => {
+  const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+  console.log(`${date} [${id}] ${comment}`);
+};
+
 export const seed = () => {
   const slugs = {};
-  console.log('Starting database seed');
-  console.log('Getting XML');
+  log('app', 'Fetching XML to seed database...')
   HTTP.get(
     'http://www.systembolaget.se/api/assortment/products/xml',
     {},
     (err, result) => {
       const xml = result.content;
-      console.log('Got XML');
+      log('app', `Got XML!`)
       const articles = xml2js.parseStringSync(xml);
       const hash = CryptoJS.SHA1(
         JSON.stringify(articles.artiklar.artikel),
       ).toString();
       if (Settings.find({hash}).count() > 0) {
-        console.log('Database already seeded');
+        log('app', `Database already seeded`)
         return;
       }
       Settings.remove({});
@@ -67,7 +71,7 @@ export const seed = () => {
       Settings.insert({
         hash,
       });
-      console.log(`Done seeding database with hash ${hash}`);
+      log('app', `Done seeding database with hash ${hash}`)
       Email.send({
         to: process.env.EMAILTO,
         from: process.env.EMAILFROM,
