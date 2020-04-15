@@ -25,7 +25,9 @@
     "eslint-import-resolver-meteor": "^0.4.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.9.2",
     "babel-runtime": "^6.23.0",
+    "bootstrap": "^4.4.1",
     "timeago.js": "^4.0.2"
   }
 }
