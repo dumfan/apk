@@ -1,11 +1,4 @@
 <template name="main">
-  <!-- <div v-if="loading" class="text-center">
-    <div class="spinner">
-      <div class="dot1"></div>
-      <div class="dot2"></div>
-    </div>
-    <p>Väntar på data</p>
-  </div> -->
   <loading-spinner v-if="loading">
     Väntar på data
   </loading-spinner>

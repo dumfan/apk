@@ -33,7 +33,6 @@ export default {
     settings () {
       const settings = Settings.findOne('settings') || {};
       return settings;
-      // return Settings.find({})
     }
   },
   methods: {

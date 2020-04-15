@@ -1,14 +1,25 @@
 import {slugify} from 'meteor/yasaricli:slugify';
-import {HTTP} from 'meteor/http';
 import * as xml2js from 'xml2js';
 import {CryptoJS} from 'meteor/jparker:crypto-core';
+import fetch from 'node-fetch';
 import {BoozeGroups, Booze, Settings} from '../lib/booze';
 import {log} from '../lib/helpers';
 
+const getArticles = async url => {
+  const result = await fetch(url);
+  const xml = await result.text();
+  log('seed', `Got XML!`);
+  const articles = await xml2js.parseStringPromise(xml, {
+    explicitArray: false,
+  });
+  log('seed', `Parsed XML`);
+  return articles;
+};
+
 function insert(item) {
-  const price = parseFloat(item.Prisinklmoms[0]);
-  const volume = parseFloat(item.Volymiml[0]);
-  const alcohol = parseFloat(item.Alkoholhalt[0]);
+  const price = parseFloat(item.Prisinklmoms);
+  const volume = parseFloat(item.Volymiml);
+  const alcohol = parseFloat(item.Alkoholhalt);
   const standardUnit = volume * alcohol * 0.01 * (1 / 15);
   const kps = price / standardUnit;
 
@@ -31,53 +42,43 @@ function insert(item) {
   });
 }
 
-export const seed = () => {
+export const seed = async () => {
   const slugs = {};
   log('seed', 'Fetching XML to seed database...');
-  HTTP.get(
+  const result = await getArticles(
     'http://www.systembolaget.se/api/assortment/products/xml',
-    {},
-    async (err, result) => {
-      const xml = result.content;
-      log('seed', `Got XML!`);
-      const articles = await xml2js.parseStringPromise(xml, {
-        explicitArray: false,
-      });
-      log('seed', `Parsed XML`);
-      console.log(articles.artiklar.artikel[0]);
-      const hash = CryptoJS.SHA1(
-        JSON.stringify(articles.artiklar.artikel),
-      ).toString();
-      const settings = Settings.findOne('settings');
-      if (settings && settings.hash === hash) {
-        log('seed', `Database already seeded`);
-        Settings.upsert('settings', {
-          $set: {
-            lastCheck: Date.now(),
-          },
-        });
-        return;
-      }
-      log('seed', `Seed started`);
-      Booze.remove({});
-      BoozeGroups.remove({});
-      articles.artiklar.artikel.forEach(item => {
-        insert(item);
-        const slug = slugify(item.Varugrupp[0]);
-        if (!slugs[slug]) {
-          BoozeGroups.upsert(slug, {
-            slug,
-            name: item.Varugrupp[0],
-          });
-          slugs[slug] = true;
-        }
-      });
-      Settings.upsert('settings', {
-        hash,
-        time: Date.now(),
-        lastCheck: Date.now(),
-      });
-      log('seed', `Done seeding database with hash ${hash}`);
-    },
   );
+  const hash = CryptoJS.SHA1(
+    JSON.stringify(result.artiklar.artikel),
+  ).toString();
+  const settings = Settings.findOne('settings');
+  if (settings && settings.hash === hash) {
+    log('seed', `Database already seeded`);
+    Settings.upsert('settings', {
+      $set: {
+        lastCheck: Date.now(),
+      },
+    });
+    return;
+  }
+  log('seed', `Seed started`);
+  Booze.remove({});
+  BoozeGroups.remove({});
+  result.artiklar.artikel.forEach(item => {
+    insert(item);
+    const slug = slugify(item.Varugrupp[0]);
+    if (!slugs[slug]) {
+      BoozeGroups.upsert(slug, {
+        slug,
+        name: item.Varugrupp[0],
+      });
+      slugs[slug] = true;
+    }
+  });
+  Settings.upsert('settings', {
+    hash,
+    time: Date.now(),
+    lastCheck: Date.now(),
+  });
+  log('seed', `Done seeding database with hash ${hash}`);
 };
