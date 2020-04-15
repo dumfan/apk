@@ -50,7 +50,7 @@ export const seed = () => {
         log('seed', `Database already seeded`);
         Settings.upsert('settings', {
           $set: {
-            lastCheck: new Date().toISOString().slice(0, 19).replace('T', ' '),
+            lastCheck: Date.now(),
           },
         });
         return;
@@ -71,8 +71,8 @@ export const seed = () => {
       });
       Settings.upsert('settings', {
         hash,
-        time: new Date().toISOString().slice(0, 19).replace('T', ' '),
-        lastCheck: new Date().toISOString().slice(0, 19).replace('T', ' '),
+        time: Date.now(),
+        lastCheck: Date.now(),
       });
       log('seed', `Done seeding database with hash ${hash}`);
     },
