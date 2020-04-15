@@ -1,3 +1,6 @@
+akryum:vue-component@0.15.2
+akryum:vue-component-dev-client@0.4.7
+akryum:vue-component-dev-server@0.1.4
 allow-deny@1.1.0
 autoupdate@1.6.0
 babel-compiler@7.5.3
@@ -13,6 +16,7 @@ caching-compiler@1.2.2
 caching-html-compiler@1.1.3
 callback-hook@1.3.0
 check@1.3.1
+dburles:mongo-collection-instances@0.3.4
 ddp@1.4.0
 ddp-client@2.3.3
 ddp-common@1.4.0
@@ -41,13 +45,14 @@ jparker:crypto-sha1@0.1.0
 jquery@1.11.11
 kadira:blaze-layout@2.3.0
 kadira:flow-router@2.12.1
+lai:collection-extensions@0.1.4
 launch-screen@1.2.0
 livedata@1.0.18
 logging@1.1.20
 meteor@1.9.3
 meteor-base@1.4.0
 meteorhacks:picker@1.0.3
-meteortoys:toykit@10.0.0
+meteortoys:toykit@2.2.1
 minifier-css@1.5.0
 minifier-js@2.6.0
 minimongo@1.5.0
@@ -60,11 +65,11 @@ mongo@1.9.1
 mongo-decimal@0.1.1
 mongo-dev-server@1.1.0
 mongo-id@1.0.7
-msavin:mongol@10.0.1
+msavin:mongol@1.6.2
 npm-mongo@3.7.0
 observe-sequence@1.0.16
 ordered-dict@1.1.0
-peerlibrary:blocking@0.6.0
+peerlibrary:blocking@0.5.2
 peerlibrary:xml2js@0.4.8_1
 percolate:synced-cron@1.3.2
 promise@0.11.2
