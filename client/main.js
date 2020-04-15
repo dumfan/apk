@@ -1,41 +1,14 @@
-import {Template} from 'meteor/templating';
-import {FlowRouter} from 'meteor/kadira:flow-router';
-import {Booze} from '../lib/booze';
+import Vue from 'vue';
+import VueMeteorTracker from 'vue-meteor-tracker';
+import App from '/imports/ui/App.vue';
+import '/imports/ui/routes';
 
-Template.main.helpers({
-  booze() {
-    return Booze.find(
-      {},
-      {
-        sort: {
-          apk: -1,
-        },
-      },
-    );
-  },
-  loading() {
-    return !FlowRouter.subsReady();
-  },
-  noresults() {
-    if (Booze.find().count() === 0) {
-      return true;
-    }
-    return false;
-  },
-  round(float) {
-    return Math.round(float * 100) / 100;
-  },
-  rowClass() {
-    if (this.apk > 2) {
-      return 'amazing';
-    } else if (this.apk < 1) {
-      return 'bad';
-    }
+Vue.use(VueMeteorTracker);
 
-    return false;
-  },
-  url() {
-    const pre = 'http://www.systembolaget.se/';
-    return pre + this.realId;
-  },
+Meteor.startup(() => {
+  // eslint-disable-next-line no-new
+  new Vue({
+    el: '#app',
+    ...App,
+  });
 });

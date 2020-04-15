@@ -1,3 +1,14 @@
+<template>
+  <div class="text-center">
+    <div class="spinner">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
+    <p><slot /></p>
+  </div>
+</template>
+
+<style scoped>
 .spinner {
   margin: 100px auto;
   width: 40px;
@@ -46,3 +57,5 @@
     -webkit-transform: scale(1.0);
   }
 }
+
+</style>

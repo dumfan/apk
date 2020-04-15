@@ -4,9 +4,7 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-peerlibrary:xml2js
 kadira:flow-router
-kadira:blaze-layout
 meteorhacks:picker
 percolate:synced-cron
 benjick:tota11y
@@ -16,7 +14,6 @@ mobile-experience@1.1.0
 mongo@1.9.0
 blaze-html-templates
 session@1.2.0
-http@1.4.2
 jquery
 tracker@1.2.0
 logging@1.1.20
@@ -36,4 +33,5 @@ yasaricli:slugify
 underscore
 fourseven:scss
 seba:minifiers-autoprefixer
+akryum:vue-component
 msavin:mongol

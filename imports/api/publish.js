@@ -1,4 +1,4 @@
-import {BoozeGroups, Booze, Settings} from '../lib/booze';
+import {BoozeGroups, Booze, Settings} from '/imports/collections';
 
 const sort = {
   sort: {apk: -1},
