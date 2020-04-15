@@ -50,14 +50,11 @@ tr.bad {
 }
 
 tr {
-	border-left-color: #9FD6D2;
+	border-left: 7px solid #9FD6D2;
 	border-right: 1px solid #ddd;
 }
 tr:last-child {
 	border-bottom: 1px solid #ddd;
-}
-tr { 
-	border-left: 7px solid transparent;
 }
 tr a {
 	color: #111;

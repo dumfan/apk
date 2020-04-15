@@ -70,26 +70,4 @@ export default {
 table {
 	font-size: 14px;
 }
-
-tr.amazing {
-	border-left-color: #B3CC57;
-}
-tr.bad {
-	border-left-color: #EF746F;
-}
-
-tbody tr {
-	border-left-color: #9FD6D2;
-	border-right: 1px solid #ddd;
-}
-tbody tr:last-child {
-	border-bottom: 1px solid #ddd;
-}
-tr { 
-	border-left: 7px solid transparent;
-}
-tr a {
-	color: #111;
-}
-
 </style>
