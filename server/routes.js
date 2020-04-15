@@ -1,6 +1,6 @@
 import {slugify} from 'meteor/yasaricli:slugify';
 import {Picker} from 'meteor/meteorhacks:picker';
-import {Booze} from '../lib/booze';
+import {Booze} from '/lib/booze';
 
 const jsonRoute = Picker.filter((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
