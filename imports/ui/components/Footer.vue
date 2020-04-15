@@ -19,7 +19,7 @@
 
 <script>
 import * as timeago from 'timeago.js';
-import {Settings} from '/lib/booze';
+import {Settings} from '/imports/collections';
 
 export default {
   name: 'apk-footer',

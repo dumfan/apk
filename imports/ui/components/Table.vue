@@ -35,7 +35,7 @@
 
 <script>
 import {FlowRouter} from 'meteor/kadira:flow-router';
-import {Booze} from '/lib/booze';
+import {Booze} from '/imports/collections';
 import LoadingSpinner from './Loading';
 
 export default {

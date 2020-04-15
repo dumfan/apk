@@ -2,8 +2,8 @@ import {slugify} from 'meteor/yasaricli:slugify';
 import * as xml2js from 'xml2js';
 import {CryptoJS} from 'meteor/jparker:crypto-core';
 import fetch from 'node-fetch';
-import {BoozeGroups, Booze, Settings} from '/lib/booze';
-import {log} from '/lib/helpers';
+import {BoozeGroups, Booze, Settings} from '/imports/collections';
+import {log} from '/imports/helpers';
 
 const getArticles = async url => {
   const result = await fetch(url);

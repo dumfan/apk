@@ -26,7 +26,7 @@
 
 <script>
 import {FlowRouter} from 'meteor/kadira:flow-router';
-import {BoozeGroups} from '/lib/booze';
+import {BoozeGroups} from '/imports/collections';
 
 const favs = [
   'ol',
