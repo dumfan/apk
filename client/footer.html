@@ -2,11 +2,11 @@
   <footer class="footer">
     <div class="container">
       <p class="text-muted text-center">
-        Last seed: <strong>{{timeAgo settings.time}}</strong><br />
+        Last seed: <strong title="Last time the data was updated">{{timeAgo settings.time}}</strong><br />
         {{#unless equals settings.time settings.lastCheck}}
-          Last check: <strong>{{timeAgo settings.lastCheck}}</strong><br />
+          Last check: <strong title="Last time the data was checked">{{timeAgo settings.lastCheck}}</strong><br />
         {{/unless}}
-        Hash: <code>{{slice settings.hash}}</code>
+        Hash: <code title={{settings.hash}}>{{slice settings.hash}}</code>
       </p>
       <p class="text-center">
         <a href="https://github.com/dumfan/apk">
