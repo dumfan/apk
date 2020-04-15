@@ -37,12 +37,7 @@ const favs = [
   'rosevin',
 ];
 
-const options = {
-  sort: {name: 1},
-};
-
 export default {
-  name: 'apk-groups',
   data() {
     return {
       searchTerm: FlowRouter.getParam('term') || '',
@@ -51,13 +46,13 @@ export default {
   },
   meteor: {
     $subscribe: { 'groups': [] },
+    groups() {
+      return BoozeGroups.find({}, { sort: { name: 1 } });
+    },
     favorites() {
-      return BoozeGroups.find({}, options)
+      return this.groups
         .map(a => a)
         .filter(group => favs.includes(group.slug));
-    },
-    groups() {
-      return BoozeGroups.find({}, options);
     },
   },
   methods: {

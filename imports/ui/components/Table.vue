@@ -18,16 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="row in booze" :key="row.realId" :class="rowClass(row.apk)">
-          <td scope="row"><a :href="url(row.realId)">{{row.name}} {{row.name2}}</a></td>
-          <td>{{row.group}}</td>
-          <td class="d-none d-sm-table-cell">{{row.container}}</td>
-          <td class="d-none d-sm-table-cell">{{row.volume}} ml</td>
-          <td>{{row.price}} kr</td>
-          <td class="d-none d-sm-table-cell">{{row.alcohol}}%</td>
-          <td><strong>{{round(row.apk)}}</strong></td>
-          <td><strong>{{round(row.kps)}}</strong></td>
-        </tr>
+        <table-row v-for="row in booze" :key="row.realId" :row="row" />
       </tbody>
     </table>
   </div>
@@ -37,11 +28,13 @@
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {Booze} from '/imports/collections';
 import LoadingSpinner from './Loading';
+import TableRow from './TableRow';
 
 export default {
   name: 'apk-table',
   components: {
-    LoadingSpinner
+    LoadingSpinner,
+    TableRow
   },
   data() {
     return {
@@ -68,24 +61,6 @@ export default {
         return true;
       }
       return false;
-    },
-  },
-  methods: {
-    round(float) {
-      return Math.round(float * 100) / 100;
-    },
-    rowClass(apk) {
-      if (apk > 2) {
-        return 'amazing';
-      } else if (apk < 1) {
-        return 'bad';
-      }
-
-      return false;
-    },
-    url(realId) {
-      const pre = 'http://www.systembolaget.se/';
-      return pre + realId;
     },
   }
 }
