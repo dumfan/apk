@@ -3,25 +3,28 @@
     <div class="row">
       <div class="col-sm-3">
         <label class="control-label" for="product-group">Visa alkoholtyp</label>
-
-        <select class="form-control" id="product-group">
-          <option value="alla">Alla</option>
-          {{#if favorites.length}}
-            <optgroup label="Snabbval">
-            {{#each favorites}}
+        <div class="input-group mb-3">
+          <select class="form-control" id="product-group">
+            <option value="alla">Alla</option>
+            {{#if favorites.length}}
+              <optgroup label="Snabbval">
+              {{#each favorites}}
+                <option value="{{slug}}" {{selected}}>{{name}}</option>
+              {{/each}}
+              </optgroup>
+            {{/if}}
+            {{#each groups}}
               <option value="{{slug}}" {{selected}}>{{name}}</option>
             {{/each}}
-            </optgroup>
-          {{/if}}
-          {{#each groups}}
-            <option value="{{slug}}" {{selected}}>{{name}}</option>
-          {{/each}}
-        </select>
+          </select>
+        </div>
       </div>
 
       <div class="col-sm-3">
         <label class="control-label" for="product-search">Sök produkt</label>
-        <input type="search" value="{{searchTerm}}" placeholder="Sökterm" class="form-control product-search" id="product-search">
+        <div class="input-group mb-3">
+          <input type="search" value="{{searchTerm}}" placeholder="Sökterm" class="form-control product-search" id="product-search">
+        </div>
       </div>
     </div>
   </div>
