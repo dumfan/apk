@@ -23,11 +23,6 @@ import {Settings} from '/imports/collections';
 
 export default {
   name: 'apk-footer',
-  data() {
-    return {
-      date: new Date()
-    };
-  },
   meteor: {
     $subscribe: { 'settings': [] },
     settings () {
