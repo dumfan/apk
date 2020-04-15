@@ -31,8 +31,4 @@ body {
 .container {
   margin-top: 30px;
 }
-p.title {
-  font-size: 2em;
-  text-align: center;
-}
 </style>
