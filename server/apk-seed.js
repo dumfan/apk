@@ -66,11 +66,11 @@ export const seed = async () => {
   BoozeGroups.remove({});
   result.artiklar.artikel.forEach(item => {
     insert(item);
-    const slug = slugify(item.Varugrupp[0]);
+    const slug = slugify(item.Varugrupp);
     if (!slugs[slug]) {
       BoozeGroups.upsert(slug, {
         slug,
-        name: item.Varugrupp[0],
+        name: item.Varugrupp,
       });
       slugs[slug] = true;
     }

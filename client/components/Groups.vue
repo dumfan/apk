@@ -68,19 +68,19 @@ export default {
       this.group = event.target.value
       FlowRouter.go('/:group/:term?', {
         group: event.target.value,
-        term: FlowRouter.getParam('term'),
+        term: this.searchTerm,
       });
     },
     onChangeTerm(event) {
       this.searchTerm = event.target.value
       if (event.target.value.length === 0) {
         FlowRouter.go('/:group/', {
-          group: FlowRouter.getParam('group') || 'alla',
+          group: this.group,
         });
       }
       if (event.target.value.length >= 3) {
         FlowRouter.go('/:group/:term', {
-          group: FlowRouter.getParam('group') || 'alla',
+          group: this.group,
           term: event.target.value,
         });
       }
