@@ -34,23 +34,9 @@
 </template>
 
 <script>
-import * as timeago from 'timeago.js';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {Booze} from '/lib/booze';
 import LoadingSpinner from './Loading';
-
-const favs = [
-  'ol',
-  'cider',
-  'rott-vin',
-  'vitt-vin',
-  'okryddad-sprit',
-  'rosevin',
-];
-
-const options = {
-  sort: {name: 1},
-};
 
 export default {
   name: 'apk-table',

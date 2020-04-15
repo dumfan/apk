@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import * as timeago from 'timeago.js';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {BoozeGroups} from '/lib/booze';
 
