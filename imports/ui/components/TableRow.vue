@@ -12,9 +12,6 @@
 </template>
 
 <script>
-import {FlowRouter} from 'meteor/kadira:flow-router';
-import {Booze} from '/imports/collections';
-
 export default {
   props: {
     row: Object
