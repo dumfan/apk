@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
 import {slugify} from 'meteor/yasaricli:slugify';
 import {HTTP} from 'meteor/http';
-import {xml2js} from 'meteor/peerlibrary:xml2js';
+import * as xml2js from 'xml2js';
 import {CryptoJS} from 'meteor/jparker:crypto-core';
 import {BoozeGroups, Booze, Settings} from '../lib/booze';
 import {log} from '../lib/helpers';
@@ -14,20 +13,20 @@ function insert(item) {
   const kps = price / standardUnit;
 
   const apk = alcohol / 100 * volume / price;
-  Booze.upsert(+item.nr[0], {
-    realId: +item.nr[0],
+  Booze.upsert(+item.nr, {
+    realId: +item.nr,
     apk,
     price,
     volume,
     alcohol,
     kps,
-    name: item.Namn[0],
-    name2: item.Namn2[0],
-    group: item.Varugrupp[0],
-    groupSlug: slugify(item.Varugrupp[0]),
-    selection: item.Sortiment[0],
-    eco: +item.Ekologisk[0],
-    container: item.Forpackning[0],
+    name: item.Namn,
+    name2: item.Namn2,
+    group: item.Varugrupp,
+    groupSlug: slugify(item.Varugrupp),
+    selection: item.Sortiment,
+    eco: +item.Ekologisk,
+    container: item.Forpackning,
     original: item,
   });
 }
@@ -38,10 +37,14 @@ export const seed = () => {
   HTTP.get(
     'http://www.systembolaget.se/api/assortment/products/xml',
     {},
-    (err, result) => {
+    async (err, result) => {
       const xml = result.content;
       log('seed', `Got XML!`);
-      const articles = xml2js.parseStringSync(xml);
+      const articles = await xml2js.parseStringPromise(xml, {
+        explicitArray: false,
+      });
+      log('seed', `Parsed XML`);
+      console.log(articles.artiklar.artikel[0]);
       const hash = CryptoJS.SHA1(
         JSON.stringify(articles.artiklar.artikel),
       ).toString();
