@@ -12,4 +12,7 @@ Template.footer.helpers({
   timeAgo(timestamp) {
     return timeago.format(timestamp);
   },
+  slice(hash) {
+    return hash.slice(0, 8);
+  },
 });

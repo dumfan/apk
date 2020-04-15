@@ -6,7 +6,7 @@
         {{#unless equals settings.time settings.lastCheck}}
           Last check: <strong>{{timeAgo settings.lastCheck}}</strong><br />
         {{/unless}}
-        Hash: <code>{{settings.hash}}</code>
+        Hash: <code>{{slice settings.hash}}</code>
       </p>
       <p class="text-center">
         <a href="https://github.com/dumfan/apk">
