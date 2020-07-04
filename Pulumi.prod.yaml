@@ -1,0 +1,6 @@
+config:
+  apk:dockerPassword:
+    secure: AAABAA2wUot6jfTtqaBC8Rta6MprdtoYFhW2oNNFwE8aWQLBCXo9mjxukctXCaPY
+  apk:domainName: apk2.dumfan.net
+  digitalocean:token:
+    secure: AAABALMOKdeXPJnwpDB9gl/834kPW/PSzsGOPEjE4k72BhdQGh+6zARQ2VCAijCrhTRVU020wW2Lld2ohnHstqjCyW9l692EViXjtWi4s72TnbPZft7HCkp8CJ6ijc3h
