@@ -85,7 +85,6 @@ const ingress = new k8s.networking.v1beta1.Ingress(appName,
       annotations: {
         'cert-manager.io/issuer': 'letsencrypt-prod',
         'kubernetes.io/ingress.class': 'nginx',
-        'nginx.ingress.kubernetes.io/backend-protocol': 'HTTPS',
       },
     },
     spec: {
