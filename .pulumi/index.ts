@@ -41,7 +41,7 @@ const deployment = new k8s.apps.v1.Deployment(
           containers: [
             {
               name: 'apk',
-              image: image.id, // 'dumfan/apk'
+              image: image.id,
               env: [
                 {
                   name: 'ROOT_URL',
@@ -103,7 +103,7 @@ const ingress = new k8s.networking.v1beta1.Ingress(appName,
                 path: '/',
                 backend: {
                   serviceName: service.metadata.name,
-                  servicePort: 'http',
+                  servicePort: 3000,
                 }
               },
             ],
