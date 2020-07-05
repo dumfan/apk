@@ -1,0 +1,4 @@
+name: apk
+runtime: nodejs
+description: A minimal DigitalOcean TypeScript Pulumi program
+main: .pulumi
