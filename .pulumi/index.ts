@@ -72,7 +72,7 @@ const deployment = new k8s.apps.v1.Deployment(
 const service = new k8s.core.v1.Service(appName, {
   metadata: { labels: deployment.spec.template.metadata.labels },
   spec: {
-      type: 'LoadBalancer',
+      type: 'NodePort',
       ports: [{ port: 3000, targetPort: 3000, protocol: 'TCP' }],
       selector: appLabels
   }
